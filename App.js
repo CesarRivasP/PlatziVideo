@@ -1,59 +1,35 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Image } from 'react-native';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Hello World',
-});
+import { Text } from 'react-native';
+import Home from './src/screens/containers/home';
 
 type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <View style={styles.container}>
-        <Image
-          source={require('./assets/logo.png')}
-          style={{ width:200, height: 45 }}
-        />
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+      <Home>
+        <Text>Header</Text>
+        <Text>Buscador</Text>
+        <Text>Categorias</Text>
+        <Text>Sugerencias</Text>
+      </Home>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 
 /*
 <Image source={{ uri:'' }} /> Para rutas absolutas (contenido externo de internet)
 <Image source={require('route')} /> Rutas relativas
+* No hace falta indicar el display, puesto que todos son display flex por defecto
+* flexDirection en la web esta en filas 'rows', en RN se encuentra en columnas 'culums'
+de manera que ponga los elementos encima de otros.
+* background no existe, se usa backgroundColor puesto que en css normal con background se puede poner
+una imagen, y en RN no es posible ya que hay un componente dedicado a esa funcionalidad, el cual forma
+parte del componente Image.
+* StyleSheet.create({  //crear hoja de estilos js
+* backgroundColor: Platform.select({
+  ios: 'green',
+  android: 'grey',
+}),
+* Como home lo que devuelve son sus hijos, lo se le ponga aqui es lo que se va a renderizar en la UI
 */
