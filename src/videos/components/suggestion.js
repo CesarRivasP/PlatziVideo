@@ -6,17 +6,19 @@ const Suggestion = (props) => {
     <View style={styles.container}>
       <View style={styles.left}>
         <Image
-          source={require('../../../assets/logo.png')}
+          source={{ uri: props.medium_cover_image }}
           style={styles.cover}
         />
         <View style={styles.genre}>
-          <Text style={styles.genreText}>Accion</Text>
+        {/* si se quiere mapear todos los elementos de la lista */}
+        {/* { props.genres.map(genre => <Text style={styles.genreText}>{genre}</Text>)} */}
+          <Text style={styles.genreText}>{ props.genres[0] }</Text>
         </View>
       </View>
       <View style={styles.right}>
-        <Text style={styles.title}>Avengers</Text>
-        <Text style={styles.year}>2007</Text>
-        <Text style={styles.rating}>Five Stars</Text>
+        <Text style={styles.title}>{ props.title }</Text>
+        <Text style={styles.year}>{ props.year }</Text>
+        <Text style={styles.rating}>{ props.rating }</Text>
       </View>
     </View>
   )
@@ -59,6 +61,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   genre: {
+    flexDirection: 'row',
     position:'absolute',
     left: 0,
     top: 0,
@@ -73,3 +76,5 @@ const styles = StyleSheet.create({
 })
 
 export default Suggestion;
+
+// stretch? es el valor por dedecto de alignSelf
