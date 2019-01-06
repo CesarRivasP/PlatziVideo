@@ -11,6 +11,7 @@ class SuggestionList extends Component {
   renderItem = ({item}) => {
     return (
       <Suggestion { ...item } />
+      //todas las propiedades del item
     );
   }
 
@@ -23,26 +24,29 @@ class SuggestionList extends Component {
   renderEmpty = () => {
     return (
       <Empty text="No hay sugerencias" />
-    );
+    );;
   }
 
+  keyExtractor = (keys) => keys.id.toString();
+
   render () {
-    const list = [
-      {
-        key: '1',
-        title: 'Ces',
-      },
-      {
-        key: '2',
-        title: 'sar',
-      }
-    ]
+    // const list = [
+    //   {
+    //     key: '1',
+    //     title: 'Ces',
+    //   },
+    //   {
+    //     key: '2',
+    //     title: 'sar',
+    //   }
+    // ]
     return (
       <Layout title="Recomendado para ti">
         <FlatList
-          data={ list }
+          keyExtractor={this.keyExtractor}
+          data={ this.props.list }
           ListEmptyComponent={this.renderEmpty}
-          ItemSeparatorComponent={this.itemSeparator}//para los separadores
+          ItemSeparatorComponent={this.itemSeparator} //para los separadores
           renderItem={this.renderItem}
         />
       </Layout>
@@ -51,3 +55,7 @@ class SuggestionList extends Component {
 }
 
 export default SuggestionList;
+
+/*
+keyExtractor: propiedad de FlatList
+*/
