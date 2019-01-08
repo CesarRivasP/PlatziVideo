@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
 const Suggestion = (props) => {
+  // let genre = (props.genres) ? props.genres[0] : "No category"
+  const { title, genres, rating, year } = props;
   return(
     <View style={styles.container}>
       <View style={styles.left}>
@@ -12,13 +14,13 @@ const Suggestion = (props) => {
         <View style={styles.genre}>
         {/* si se quiere mapear todos los elementos de la lista */}
         {/* { props.genres.map(genre => <Text style={styles.genreText}>{genre}</Text>)} */}
-          <Text style={styles.genreText}>{ props.genres[0] }</Text>
+          <Text style={styles.genreText}>{ genres ? genres[0] : "No Category" }</Text>
         </View>
       </View>
       <View style={styles.right}>
-        <Text style={styles.title}>{ props.title }</Text>
-        <Text style={styles.year}>{ props.year }</Text>
-        <Text style={styles.rating}>{ props.rating }</Text>
+        <Text style={styles.title}>{ title }</Text>
+        <Text style={styles.year}>{ year }</Text>
+        <Text style={styles.rating}>{ rating }</Text>
       </View>
     </View>
   )
