@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
-import { Text } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import Home from './src/screens/containers/home';
 import Header from './src/sections/components/header';
-import SuggestionList from './src/videos/containers/suggestion-list'
+import SuggestionList from './src/videos/containers/suggestion-list';
+import Loading from './src/sections/components/loading';
 
 import API from './utils/api'
 
 type Props = {};
 export default class App extends Component<Props> {
   state = {
-    suggestionList: []
+    suggestionList: [],
+    loading: true
   }
   // componentDidMount(){
   // Para qe el componentDidMount sea asincrono
@@ -18,21 +20,31 @@ export default class App extends Component<Props> {
     // API.getSuggestion(10);
     const movies = await API.getSuggestion(10);
     console.log(movies);
-    this.setState({ suggestionList: movies })
+    this.setState({ suggestionList: movies, loading: false })
   }
 
   render() {
+    const { loading, suggestionList } = this.state;
     return (
       <Home>
         <Header />
         <Text>Buscador</Text>
         <Text>Categorias</Text>
-        <SuggestionList list={this.state.suggestionList}/>
+        {
+          loading ?
+            <Loading /> : <SuggestionList list={ suggestionList }/>
+        }
       </Home>
     );
   }
 }
 
+const styles = StyleSheet.create({
+  containerLoading: {
+    flex: 1,
+    justifyContent: 'center'
+  }
+})
 
 /*
 <Image source={{ uri:'' }} /> Para rutas absolutas (contenido externo de internet)
