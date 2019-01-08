@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import Suggestion from '../components/suggestion';
-import Layout from '../components/suggestion-list-layout';
+import Layout from '../components/category-list-layout.js';
 import Separator from '../components/vertical-separator';
 import Empty from '../components/empty';
+import HorizontalSeparator from '../../sections/components/horizontal-separator';
 
 class CategoryList extends Component {
 
@@ -16,7 +17,7 @@ class CategoryList extends Component {
 
   itemSeparator = () => {
     return (
-      <Separator />
+      <HorizontalSeparator />
     );
   }
 
