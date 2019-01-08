@@ -9,7 +9,6 @@ import { View, Text, StyleSheet } from 'react-native';
          borderTopColor: (props.color) ? props.color : '#eaeaea'
        }
        ]}>
-       <Text>esto es un separador</Text>
      </View>
    );
  }
