@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import Home from './src/screens/containers/home';
 import Header from './src/sections/components/header';
 import SuggestionList from './src/videos/containers/suggestion-list';
+import CategoryList from './src/videos/containers/category-list';
 import Loading from './src/sections/components/loading';
 
 import API from './utils/api'
@@ -11,6 +12,7 @@ type Props = {};
 export default class App extends Component<Props> {
   state = {
     suggestionList: [],
+    categoryList: [],
     loading: true
   }
   // componentDidMount(){
@@ -20,20 +22,25 @@ export default class App extends Component<Props> {
     // API.getSuggestion(10);
     const movies = await API.getSuggestion(10);
     console.log(movies);
-    this.setState({ suggestionList: movies, loading: false })
+    const categories = await API.getMovies();
+    console.log(categories);
+    this.setState(
+      { suggestionList: movies, loading: false, categoryList: categories  }
+    )
   }
 
   render() {
-    const { loading, suggestionList } = this.state;
+    const { loading, suggestionList, categoryList } = this.state;
     return (
       <Home>
         <Header />
         <Text>Buscador</Text>
-        <Text>Categorias</Text>
-        {
+        {/* {
           loading ?
             <Loading /> : <SuggestionList list={ suggestionList }/>
-        }
+        } */}
+        <CategoryList list={ categoryList } />
+        <SuggestionList list={ suggestionList }/>
       </Home>
     );
   }
