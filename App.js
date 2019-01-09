@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import Home from './src/screens/containers/home';
-import Header from './src/sections/components/header';
 import SuggestionList from './src/videos/containers/suggestion-list';
 import CategoryList from './src/videos/containers/category-list';
+import Player from './src/player/containers/player';
+import Header from './src/sections/components/header';
 import Loading from './src/sections/components/loading';
 import API from './utils/api';
-import Video from 'react-native-video';
+
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -35,11 +36,7 @@ export default class App extends Component<Props> {
       <Home>
         <Header />
         <View style={{ flex: 1, height: 100 }}>
-          <Video
-            source={{ uri: 'https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4'}}
-            style={{ position: 'absolute', left: 0, right: 0, bottom: 0, top: 0 }}  //asi se hace re size en si mismo
-            resizeMode="contain" //Asi mantiene sus proporciones | cover aprovecha todo el tamaño
-          />
+          <Player />
         </View>
         <Text>Buscador</Text>
         {/* {
