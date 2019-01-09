@@ -15,7 +15,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   separator: {
-    borderTopWidth: 1,
+    borderTopWidth: 2,
   }
 });
 
