@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
-import Suggestion from '../components/suggestion';
+import Category from '../components/category';
 import Layout from '../components/category-list-layout.js';
-import Separator from '../components/vertical-separator';
+import HorizontalSeparator from '../components/horizontal-separator';
 import Empty from '../components/empty';
-import HorizontalSeparator from '../../sections/components/horizontal-separator';
+
 
 class CategoryList extends Component {
 
   renderItem = ({item}) => {
     return (
-      <Suggestion { ...item } />
+      <Category { ...item } />
       //todas las propiedades del item
     );
   }
 
   itemSeparator = () => {
     return (
-      <HorizontalSeparator />
+    <HorizontalSeparator />
     );
   }
 
