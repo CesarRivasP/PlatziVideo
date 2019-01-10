@@ -15,6 +15,7 @@ const Layout = (props) => {
             loader
         }
       </View>
+      { props.controls }
     </View>
   );
 }
