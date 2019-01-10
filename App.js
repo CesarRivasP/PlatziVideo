@@ -35,9 +35,7 @@ export default class App extends Component<Props> {
     return (
       <Home>
         <Header />
-        <View style={styles.containerVideo}>
-          <Player />
-        </View>
+        <Player />
         <Text>Buscador</Text>
         {/* {
           loading ?
