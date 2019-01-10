@@ -35,7 +35,7 @@ export default class App extends Component<Props> {
     return (
       <Home>
         <Header />
-        <View style={{ flex: 1, height: 100 }}>
+        <View style={styles.containerVideo}>
           <Player />
         </View>
         <Text>Buscador</Text>
@@ -54,6 +54,10 @@ const styles = StyleSheet.create({
   containerLoading: {
     flex: 1,
     justifyContent: 'center'
+  },
+  containerVideo: {
+     flex: 1,
+     height: 100
   }
 })
 
