@@ -3,7 +3,8 @@ import { View, Text, StyleSheet } from 'react-native';
 
 
 const Layout = (props) => {
-  const { video, loader, loading } = props;
+  const { loading } = props;
+  const { video, loader, controls } = props;
   return (
     <View style={styles.container}>
       <View style={styles.video}>
@@ -15,7 +16,7 @@ const Layout = (props) => {
             loader
         }
       </View>
-      { props.controls }
+      { controls }
     </View>
   );
 }
