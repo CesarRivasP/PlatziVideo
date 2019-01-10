@@ -10,6 +10,7 @@ import {
 
 
 const PlayPause = (props) => {
+  const { paused } = props;
   return (
     <TouchableHighlight
       onPress={props.onPress}
@@ -23,7 +24,7 @@ const PlayPause = (props) => {
       }}  //espacio alrededor del boton en el cual puede reaccionar
     >
       {
-        props.paused ?
+        paused ?
           <Text style={styles.button}>Play</Text>
           :
           <Text style={styles.button}>Pause</Text>
