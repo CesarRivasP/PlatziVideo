@@ -15,7 +15,7 @@ const CategoryListLayout = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 25,
+    paddingVertical: 20,
     paddingHorizontal: 10,
     // flex: 1,
   },
