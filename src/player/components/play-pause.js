@@ -10,10 +10,10 @@ import {
 
 
 const PlayPause = (props) => {
-  const { paused } = props;
+  const { paused, onPress } = props;
   return (
     <TouchableHighlight
-      onPress={props.onPress}
+      onPress={onPress}
       style={styles.container}
       underlayColor="red"
       hitSlop={{
