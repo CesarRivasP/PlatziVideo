@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
   right:{
     flexDirection: 'row', //por defecto se encuentra en column
-    flex:1, //asi este elemento ocupara mas espacio
+    flex: 1, //asi este elemento ocupara mas espacio
     justifyContent: 'flex-end',
   }
 })
