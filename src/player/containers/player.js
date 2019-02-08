@@ -4,13 +4,16 @@ import Video from 'react-native-video';
 import Layout from '../components/layout';
 import ControlLayout from '../components/control-layout';
 import PlayPause from '../components/play-pause';
+import FullScreen from '../components/full-screen';
 
 
 class Player extends Component {
   state = {
     loading: true,
     paused: false,
+    fullscreen: false
   }
+
   onBuffer = ({isBuffering}) => {  // isBuffering indica si esta cargando o no
     this.setState({ loading: isBuffering })
   }
@@ -49,6 +52,7 @@ class Player extends Component {
             <Text>Progress bar</Text>
             <Text>time left</Text>
             <Text>fullscreen</Text>
+            <FullScreen /*onPress={this.fullScreen}*/ />
           </ControlLayout>
         }>
       </Layout>
