@@ -28,6 +28,12 @@ class Player extends Component {
     }); //Para que sea inverso a como estaba anteriormente
   }
 
+  fullScreen = () => {
+    this.setState({
+      fullscreen: !this.state.fullscreen
+    })
+  }
+
   render() {
     const { loading } = this.state;
     return (
@@ -41,6 +47,7 @@ class Player extends Component {
             onBuffer={this.onBuffer}
             // onLoad={this.onLoad} en caso de que no funcione en android la validacion con onBuffering
             paused={this.state.paused}
+            fullscreen={this.state.fullscreen}
           />
         }
         loader={
@@ -51,8 +58,7 @@ class Player extends Component {
             <PlayPause onPress={this.playPause} paused={this.state.paused}/>
             <Text>Progress bar</Text>
             <Text>time left</Text>
-            <Text>fullscreen</Text>
-            <FullScreen /*onPress={this.fullScreen}*/ />
+            <FullScreen onPress={this.fullScreen} fullscreen={this.state.fullscreen}/>
           </ControlLayout>
         }>
       </Layout>
