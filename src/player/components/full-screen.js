@@ -7,41 +7,47 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
-const iconFullScreen = (
-  <Icon name="fullscreen" /*size={30} color="#900"*/ />
-);
+// const iconFullScreen = (
+//   <view>
+//     <Icon name="fullscreen" /*size={30} color="#900"*/ />
+//   </view>
+// );
+
+const iconFullScreen = () => {
+  return (
+
+  )
+}
 
 const iconExitFullScreen = (
-  <Icon name="fullscreen-exit" /*size={30} color="#900"*/ />
+  <view>
+    <Icon name="fullscreen-exit" /*size={30} color="#900"*/ />
+  </view>
 );
 
 const FullScreen = (props) => {
-  // const { onPress } = props;
+  const { onPress, fullscreen } = props;
   return (
-    // <TouchableHighlight
-    //   onPress={onPress}
-    //   style={styles.container}
-    //   underlayColor="red"
-    //   hitSlop={{
-    //     left: 5,
-    //     top: 5,
-    //     bottom: 5,
-    //     right: 5
-    //   }}  //espacio alrededor del boton en el cual puede reaccionar
-    // >
-    //   {
-    //     paused ?
-    //       <iconFullScreen />
-    //       :
-    //       <iconExitFullScreen />
-    //   }
-    // </TouchableHighlight>
-    <View>
-      <iconFullScreen />
-    </View>
+    <TouchableHighlight
+      onPress={onPress}
+      style={styles.container}
+      underlayColor="red"
+      hitSlop={{
+        left: 5,
+        top: 5,
+        bottom: 5,
+        right: 5
+      }}>
+      {
+        fullscreen ?
+          <Icon name="fullscreen" color="#ccc" size={25} />
+          :
+          <Text style={styles.button}>N-E</Text>
+      }
+    </TouchableHighlight>
   );
 }
 
