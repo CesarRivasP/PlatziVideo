@@ -7,20 +7,9 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+// import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Icon } from 'native-base';
 
-
-// const iconFullScreen = (
-//   <view>
-//     <Icon name="fullscreen" /*size={30} color="#900"*/ />
-//   </view>
-// );
-
-const iconFullScreen = () => {
-  return (
-
-  )
-}
 
 const iconExitFullScreen = (
   <view>
@@ -43,9 +32,9 @@ const FullScreen = (props) => {
       }}>
       {
         fullscreen ?
-          <Icon name="fullscreen" color="#ccc" size={25} />
+          <Icon type="FontAwesome" name="compress" style={styles.fullscreen}/>
           :
-          <Text style={styles.button}>N-E</Text>
+          <Icon type="FontAwesome" name="arrows-alt" style={styles.fullscreen}/>
       }
     </TouchableHighlight>
   );
@@ -64,6 +53,10 @@ const styles = StyleSheet.create({
     // backgroundColor: 'grey',
     borderColor: 'white',
   },
+  fullscreen: {
+    justifyContent: 'flex-end',
+    textAlign: 'right',
+  }
 });
 
 export default FullScreen;
