@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { Provider } from 'react-redux';
 import Home from './src/screens/containers/home';
 import SuggestionList from './src/videos/containers/suggestion-list';
 import CategoryList from './src/videos/containers/category-list';
@@ -7,43 +8,58 @@ import Player from './src/player/containers/player';
 import Header from './src/sections/components/header';
 import Loading from './src/sections/components/loading';
 import API from './utils/api';
+import store from './src/store/store';
 
 
 type Props = {};
 export default class App extends Component<Props> {
   state = {
-    suggestionList: [],
-    categoryList: [],
+    // suggestionList: [],
+    // categoryList: [],
     loading: true
   }
   // componentDidMount(){
   // Para qe el componentDidMount sea asincrono
   async componentDidMount() {
     //Aqui se va a mandar la peticion a la api
+    const categoryList = await API.getMovies();
+    // console.log(categoryList);
+    store.dispatch({
+      type: 'SET_CATEGORY_LIST',
+      payload: {
+        categoryList
+      }
+    })
     // API.getSuggestion(10);
-    const movies = await API.getSuggestion(10);
-    console.log(movies);
-    const categories = await API.getMovies();
-    console.log(categories);
-    this.setState(
-      { suggestionList: movies, loading: false, categoryList: categories  }
-    )
+    const suggestionList = await API.getSuggestion(10);
+    // console.log(suggestionList);
+    // this.setState(
+    //   { suggestionList: suggestionList, loading: false, categoryList: categoriesList  }
+    // )
+    store.dispatch({
+      type: 'SET_SUGGESTION_LIST',
+      payload: {
+        suggestionList
+      }
+    })
   }
 
   render() {
     const { loading, suggestionList, categoryList } = this.state;
     return (
-      <Home>
-        <Header />
-        <Player />
-        <Text>Buscador</Text>
-        {/* {
-          loading ?
+      <Provider store={store}>
+        <Home>
+          <Header />
+          <Player />
+          <Text>Buscador</Text>
+          {/* {
+            loading ?
             <Loading /> : <SuggestionList list={ suggestionList }/>
-        } */}
-        <CategoryList list={ categoryList } />
-        <SuggestionList list={ suggestionList }/>
-      </Home>
+          } */}
+          <CategoryList /*list={ categoryList }*/ />
+          <SuggestionList /*list={ suggestionList }*/ />
+        </Home>
+      </Provider>
     );
   }
 }
