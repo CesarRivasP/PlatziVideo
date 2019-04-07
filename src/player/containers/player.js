@@ -56,7 +56,11 @@ class Player extends Component {
         controls={
           <ControlLayout>
             <PlayPause onPress={this.playPause} paused={this.state.paused}/>
-            <Text>Progress bar</Text>
+            {/* <ProgressBar 
+              progress={this.props.progress}
+              onChangeStarted={this.changeSliderStarted}
+              onChangeFinished={this.changeSliderFinished}
+            /> */}
             <Text>time left</Text>
             <FullScreen onPress={this.fullScreen} fullscreen={this.state.fullscreen}/>
           </ControlLayout>
