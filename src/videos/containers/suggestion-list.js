@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FlatList, Text } from 'react-native';
+import { connect } from 'react-redux';
 import Suggestion from '../components/suggestion';
 import Layout from '../components/suggestion-list-layout';
 import Separator from '../components/vertical-separator';
@@ -54,7 +55,13 @@ class SuggestionList extends Component {
   }
 }
 
-export default SuggestionList;
+const mapStateToProps = (state) => {
+  return {
+    list: state.suggestionList
+  }
+}
+
+export default connect(mapStateToProps)(SuggestionList);
 
 /*
 keyExtractor: propiedad de FlatList
