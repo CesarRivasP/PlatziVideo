@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native';
-
+import { Icon } from 'native-base';
 
 const PlayPause = (props) => {
   const { paused, onPress } = props;
@@ -25,9 +25,9 @@ const PlayPause = (props) => {
     >
       {
         paused ?
-          <Text style={styles.button}>Play</Text>
+          <Icon type="FontAwesome" name="play" />
           :
-          <Text style={styles.button}>Pause</Text>
+          <Icon type="FontAwesome" name="pause"/>
       }
     </TouchableHighlight>
   );
@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'grey',
     borderColor: 'white',
   },
+
 });
 
 export default PlayPause;
