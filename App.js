@@ -49,7 +49,7 @@ export default class App extends Component<Props> {
     const { loading, suggestionList, categoryList } = this.state;
     return (
       <Provider store={store}>
-        <PersistGate loading={<Text>Cargando ...</Text>} persistor={persistor}>
+        <PersistGate loading={<Loading />} persistor={persistor}>
           <Home>
             <Header />
             <Player />
