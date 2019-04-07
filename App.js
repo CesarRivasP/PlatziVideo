@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { Provider } from 'react-redux';
+import { PersistGate } from "redux-persist/integration/react";
 import Home from './src/screens/containers/home';
 import SuggestionList from './src/videos/containers/suggestion-list';
 import CategoryList from './src/videos/containers/category-list';
@@ -8,7 +9,7 @@ import Player from './src/player/containers/player';
 import Header from './src/sections/components/header';
 import Loading from './src/sections/components/loading';
 import API from './utils/api';
-import store from './src/store/store';
+import { store, persistor } from './src/store/store';
 
 
 type Props = {};
@@ -48,17 +49,19 @@ export default class App extends Component<Props> {
     const { loading, suggestionList, categoryList } = this.state;
     return (
       <Provider store={store}>
-        <Home>
-          <Header />
-          <Player />
-          <Text>Buscador</Text>
-          {/* {
-            loading ?
-            <Loading /> : <SuggestionList list={ suggestionList }/>
-          } */}
-          <CategoryList /*list={ categoryList }*/ />
-          <SuggestionList /*list={ suggestionList }*/ />
-        </Home>
+        <PersistGate loading={<Text>Cargando ...</Text>} persistor={persistor}>
+          <Home>
+            <Header />
+            <Player />
+            <Text>Buscador</Text>
+            {/* {
+              loading ?
+              <Loading /> : <SuggestionList list={ suggestionList }/>
+            } */}
+            <CategoryList /*list={ categoryList }*/ />
+            <SuggestionList /*list={ suggestionList }*/ />
+          </Home>
+        </PersistGate>
       </Provider>
     );
   }
@@ -71,7 +74,7 @@ const styles = StyleSheet.create({
   },
   containerVideo: {
      flex: 1,
-     height: 100
+     height: 300
   }
 })
 
@@ -90,4 +93,5 @@ parte del componente Image.
   android: 'grey',
 }),
 * Como home lo que devuelve son sus hijos, lo se le ponga aqui es lo que se va a renderizar en la UI
+- PersistGate es un componente como el provider, que nos permite unir la app con redux persist
 */
