@@ -1,82 +1,41 @@
-import React, {Component} from 'react';
-import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from "redux-persist/integration/react";
-import Home from './src/screens/containers/home';
-import SuggestionList from './src/videos/containers/suggestion-list';
-import CategoryList from './src/videos/containers/category-list';
-import Player from './src/player/containers/player';
-import Header from './src/sections/components/header';
 import Loading from './src/sections/components/loading';
-import API from './utils/api';
 import { store, persistor } from './src/store/store';
+import AppLayout from './src/app';
 
 
 type Props = {};
 export default class App extends Component<Props> {
-  state = {
+  // state = {
     // suggestionList: [],
     // categoryList: [],
-    loading: true
-  }
-  // componentDidMount(){
-  // Para qe el componentDidMount sea asincrono
-  async componentDidMount() {
-    //Aqui se va a mandar la peticion a la api
-    const categoryList = await API.getMovies();
-    // console.log(categoryList);
-    store.dispatch({
-      type: 'SET_CATEGORY_LIST',
-      payload: {
-        categoryList
-      }
-    })
-    // API.getSuggestion(10);
-    const suggestionList = await API.getSuggestion(10);
-    // console.log(suggestionList);
-    // this.setState(
-    //   { suggestionList: suggestionList, loading: false, categoryList: categoriesList  }
-    // )
-    store.dispatch({
-      type: 'SET_SUGGESTION_LIST',
-      payload: {
-        suggestionList
-      }
-    })
-  }
+    // loading: true
+  // }
 
   render() {
-    const { loading, suggestionList, categoryList } = this.state;
+    // const { loading, suggestionList, categoryList } = this.state;
     return (
       <Provider store={store}>
         <PersistGate loading={<Loading />} persistor={persistor}>
-          <Home>
-            <Header />
-            <Player />
-            <Text>Buscador</Text>
-            {/* {
-              loading ?
-              <Loading /> : <SuggestionList list={ suggestionList }/>
-            } */}
-            <CategoryList /*list={ categoryList }*/ />
-            <SuggestionList /*list={ suggestionList }*/ />
-          </Home>
+          <AppLayout />
         </PersistGate>
       </Provider>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  containerLoading: {
-    flex: 1,
-    justifyContent: 'center'
-  },
-  containerVideo: {
-     flex: 1,
-     height: 300
-  }
-})
+// const styles = StyleSheet.create({
+//   containerLoading: {
+//     flex: 1,
+//     justifyContent: 'center'
+//   },
+//   containerVideo: {
+//      flex: 1,
+//      height: 300
+//   }
+// })
 
 /*
 <Image source={{ uri:'' }} /> Para rutas absolutas (contenido externo de internet)
