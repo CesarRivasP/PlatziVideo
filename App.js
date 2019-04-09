@@ -26,17 +26,6 @@ export default class App extends Component<Props> {
   }
 }
 
-// const styles = StyleSheet.create({
-//   containerLoading: {
-//     flex: 1,
-//     justifyContent: 'center'
-//   },
-//   containerVideo: {
-//      flex: 1,
-//      height: 300
-//   }
-// })
-
 /*
 <Image source={{ uri:'' }} /> Para rutas absolutas (contenido externo de internet)
 <Image source={require('route')} /> Rutas relativas
