@@ -13,7 +13,9 @@ import { persistStore, persistReducer } from 'redux-persist'
 // AFTER WITH PERSIST Redux
 const persistConfig = {
   key: 'root',
-  storage
+  storage,
+  // Para no persistir en caso de quedar en alguna de las pantallas que reproducen videos
+  blacklist: [ 'selectedMovie' ] //leva dentro una lista de partes del store que no se quieren persistir
 }
 
 const persistedReducer = persistReducer(persistConfig, reducer);
