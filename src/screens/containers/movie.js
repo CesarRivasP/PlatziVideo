@@ -4,6 +4,7 @@ import MovieLayout from '../components/movie-layout';
 import Header from '../../sections/components/header';
 import Player from '../../player/containers/player';
 import Close from '../../sections/components/close';
+import Details from '../../videos/components/details';
 
 
 class Movie extends Component {
@@ -24,9 +25,14 @@ class Movie extends Component {
           <Close onPress={ this.closeVideo } />
         </Header>
         <Player />
+        <Details { ...this.props.movie }/>
       </MovieLayout>
     );
   }
 }
-
-export default connect(null)(Movie);
+const mapStateToProps = (state) => {
+  return {
+    movie: state.selectedMovie
+  }
+}
+export default connect(mapStateToProps)(Movie);
