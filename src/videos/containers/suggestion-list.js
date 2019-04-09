@@ -9,13 +9,6 @@ import Empty from '../components/empty'
 class SuggestionList extends Component {
 
 
-  renderItem = ({item}) => {
-    return (
-      <Suggestion { ...item } />
-      //todas las propiedades del item
-    );
-  }
-
   itemSeparator = () => {
     return (
       <Separator /*color="red"*/ />
@@ -25,10 +18,26 @@ class SuggestionList extends Component {
   renderEmpty = () => {
     return (
       <Empty text="No hay sugerencias" />
-    );;
+    );
   }
 
   keyExtractor = (keys) => keys.id.toString();
+
+  viewMovie = (item) => {
+    this.props.dispatch({
+      type: 'SET_SELECTED_MOVIE',
+      payload: {
+        movie: item
+      }
+    })
+  }
+
+  renderItem = ({item}) => {
+    return (
+      <Suggestion onPress={() => { this.viewMovie(item) }} { ...item } />
+      //todas las propiedades del item
+    );
+  }
 
   render () {
     // const list = [
