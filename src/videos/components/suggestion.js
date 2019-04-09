@@ -1,28 +1,30 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 const Suggestion = (props) => {
   // let genre = (props.genres) ? props.genres[0] : "No category"
   const { title, genres, rating, year } = props;
   return(
-    <View style={styles.container}>
-      <View style={styles.left}>
-        <Image
-          source={{ uri: props.medium_cover_image }}
-          style={styles.cover}
-        />
-        <View style={styles.genre}>
-        {/* si se quiere mapear todos los elementos de la lista */}
-        {/* { props.genres.map(genre => <Text style={styles.genreText}>{genre}</Text>)} */}
-          <Text style={styles.genreText}>{ genres ? genres[0] : "No Category" }</Text>
+    <TouchableOpacity onPress={props.onPress}>
+      <View style={styles.container}>
+        <View style={styles.left}>
+          <Image
+            source={{ uri: props.medium_cover_image }}
+            style={styles.cover}
+          />
+          <View style={styles.genre}>
+            {/* si se quiere mapear todos los elementos de la lista */}
+            {/* { props.genres.map(genre => <Text style={styles.genreText}>{genre}</Text>)} */}
+            <Text style={styles.genreText}>{ genres ? genres[0] : "No Category" }</Text>
+          </View>
+        </View>
+        <View style={styles.right}>
+          <Text style={styles.title}>{ title }</Text>
+          <Text style={styles.year}>{ year }</Text>
+          <Text style={styles.rating}>{ rating }</Text>
         </View>
       </View>
-      <View style={styles.right}>
-        <Text style={styles.title}>{ title }</Text>
-        <Text style={styles.year}>{ year }</Text>
-        <Text style={styles.rating}>{ rating }</Text>
-      </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 
