@@ -7,6 +7,7 @@ import CategoryList from './videos/containers/category-list';
 import Header from './sections/components/header';
 import API from '../utils/api';
 import Movie from './screens/containers/movie';
+import Search from './sections/containers/search';
 
 
 class AppLayout extends Component {
@@ -48,7 +49,8 @@ class AppLayout extends Component {
       <Home>
         <Header />
         {/* <Player /> */}
-        <Text>Buscador</Text>
+        {/* <Text>Buscador</Text> */}
+        <Search />
         {/* {
           loading ?
           <Loading /> : <SuggestionList list={ suggestionList }/>
