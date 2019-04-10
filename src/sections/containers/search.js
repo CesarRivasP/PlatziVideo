@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
+import API from '../../../utils/api';
 
 
 class Search extends Component {
@@ -8,8 +9,15 @@ class Search extends Component {
     text: ''
   }
 
-  handleSubmit = () => {
+  handleSubmit = async () => {
     console.log(this.state.text);
+    const movies = await API.searchMovie(this.state.text);
+    this.props.dispatch({
+      type: 'SET_SELECTED_MOVIE',
+      payload: {
+        movie: movies[0]
+      }
+    })
   }
 
   handleChangeText = (text) => {
@@ -41,9 +49,4 @@ const styles = StyleSheet.create({
   }
 })
 
-// const mapStateToProps = (state) => {
-//   return {
-//     selectedMovie: state.selectedMovie
-//   }
-// }
 export default connect(null)(Search);
