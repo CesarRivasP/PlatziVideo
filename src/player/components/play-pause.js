@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native';
-import { Icon } from 'native-base';
+// import { Icon } from 'native-base';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const PlayPause = (props) => {
   const { paused, onPress } = props;
@@ -15,7 +16,7 @@ const PlayPause = (props) => {
     <TouchableHighlight
       onPress={onPress}
       style={styles.container}
-      underlayColor="red"
+      // underlayColor="red"
       hitSlop={{
         left: 5,
         top: 5,
@@ -23,12 +24,7 @@ const PlayPause = (props) => {
         right: 5
       }}  //espacio alrededor del boton en el cual puede reaccionar
     >
-      {
-        paused ?
-          <Icon type="FontAwesome" name="play" />
-          :
-          <Icon type="FontAwesome" name="pause"/>
-      }
+      <Icon name={paused ? "play" : "pause"} size={28} color="#FFF" />
     </TouchableHighlight>
   );
 }
