@@ -44,7 +44,7 @@ class Movie extends Component {
           <Header>
             <Close onPress={ this.closeVideo } />
           </Header>
-          <Player />
+          {/* <Player /> */}
           <Details { ...this.props.movie }/>
         </MovieLayout>
       </Animated.View>
