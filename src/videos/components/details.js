@@ -47,7 +47,7 @@ const Details = (props) => {
   return (
     <ScrollView>
       <View style={styles.top}>
-        <Text>{ props.title }</Text>
+        <Text style={styles.title}>{ props.title }</Text>
       </View>
       <View style={styles.bottom}>
         <View style={styles.details}>
@@ -70,8 +70,13 @@ const styles = StyleSheet.create({
   top: {
     borderBottomWidth: 1,
     borderBottomColor: '#eaeaea',
-    padding: 20,
+    padding: 10,
     backgroundColor: 'white'
+  },
+  title: {
+    color: '#4c4c4c',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   details: {
     flexDirection: 'row',
